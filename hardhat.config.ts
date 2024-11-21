@@ -8,7 +8,7 @@ const config: HardhatUserConfig = {
   solidity: "0.8.27",
   networks: {
     eth_sepolia: {
-      url: "https://eth-mainnet.g.alchemy.com/v2/bQAnnzf9rbunRR02-xrDgFnkQy_z8l8d",
+      url: "https://eth-sepolia.g.alchemy.com/v2/bQAnnzf9rbunRR02-xrDgFnkQy_z8l8d",
       accounts: [process.env.PRIVATE_KEY!]
     }
   },

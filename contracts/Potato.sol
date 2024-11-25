@@ -12,7 +12,7 @@ contract Potato {
     uint256 chives;
 
     // Function to add ingredients
-    function addingredients(uint256 _potato, uint256 _sourcream, uint256 _cheese, uint256 _bacon, uint256 _chives) public {
+    function addIngredient(uint256 _potato, uint256 _sourcream, uint256 _cheese, uint256 _bacon, uint256 _chives) public {
         potato += _potato;
         sourcream += _sourcream;
         cheese += _cheese;
@@ -31,22 +31,23 @@ contract Potato {
         return ingredients;
     }
 
-    // Function to buy a potato with optional ingredients
-    function buyPotato(uint256 _sourcream, uint256 _cheese, uint256 _bacon, uint256 _chives) public payable {
+    // Function to buy 1 potato with optional ingredients
+    function buyPotato(uint256 _potato, uint256 _sourcream, uint256 _cheese, uint256 _bacon, uint256 _chives) public payable {
         require(potato >= 1, "Not enough potatoes available.");
+        require(_potato == 1, "Please buy 1 potato at a time.");
         require(sourcream >= _sourcream, "Not enough sour cream available.");
         require(cheese >= _cheese, "Not enough cheese available.");
         require(bacon >= _bacon, "Not enough bacon available.");
         require(chives >= _chives, "Not enough chives available.");
 
         // Calculate the total cost
-        uint256 totalCost = 0.005 ether + (_sourcream + _cheese + _bacon + _chives) * 0.001 ether;
+        uint256 totalCost = 0.0005 ether + (_sourcream + _cheese + _bacon + _chives) * 0.0001 ether;
 
         // Check if the user sent enough ETH
         require(msg.value >= totalCost, "Not enough ETH sent.");
 
         // Decrease the ingredient counts
-        potato -= 1; // Must buy at least one potato
+        potato -= 1; // Must buy one potato
         sourcream -= _sourcream;
         cheese -= _cheese;
         bacon -= _bacon;

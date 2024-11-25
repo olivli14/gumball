@@ -3,14 +3,16 @@ import "@nomicfoundation/hardhat-toolbox";
 const { vars } = require("hardhat/config");
 require("@nomicfoundation/hardhat-toolbox");
 import dotenv from "dotenv"; // Import dotenv
+require('dotenv').config();
 
 const config: HardhatUserConfig = {
   solidity: "0.8.27",
   networks: {
-    eth_sepolia: {
-      url: "https://eth-sepolia.g.alchemy.com/v2/bQAnnzf9rbunRR02-xrDgFnkQy_z8l8d",
-      accounts: [process.env.PRIVATE_KEY!]
-    }
+    'base-sepolia': {
+      url: 'https://sepolia.base.org',
+      accounts: [process.env.PRIVATE_KEY as string],
+      gasPrice: 1000000000,
+    },
   },
 };
 
